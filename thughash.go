@@ -4,7 +4,7 @@ import(
 	"math"
 	"strconv"
 
-	"github.com/x86ed/thughash/words"
+	"github.com/x86ed/thughash/words/words"
 )
 
 func slicepos(slice []string, value string) float64 {
