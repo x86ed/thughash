@@ -1,6 +1,6 @@
 package thughash
 
-//Hash subjects in text form(64)
+//Subjects in text form(64)
 var Subjects = []string{
 	"Baby",
 	"Bad-Bitch",
@@ -68,7 +68,7 @@ var Subjects = []string{
 	"Weezy",
 	"Yayo"}
 
-//hash verbs in text form (64)
+//Verbs hash verbs in text form (64)
 var Verbs = []string{
 	"actin",
 	"aimin",
@@ -135,7 +135,7 @@ var Verbs = []string{
 	"wig-splittin",
 	"woke-up"}
 
-// hash ends in text form (64)
+//Ends hash ends in text form (64)
 var Ends = []string{
 	"a-double-cup",
 	"a-G5",

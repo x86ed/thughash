@@ -26,7 +26,7 @@ func slicerange(slice string, index int) int {
 	return output
 }
 
-//Exported struct containing all the representations of the hash
+//ThugHash exported struct containing all the representations of the hash
 type ThugHash struct {
 	Index     int
 	Subject   string
@@ -36,7 +36,7 @@ type ThugHash struct {
 	QuickHash string
 }
 
-//Generates a thughhash struct from a given 64 bit float
+//Generate generates a thughhash struct from a given 64 bit float
 func (th *ThugHash) Generate(seed float64) {
 	var sm, vm float64
 	sm = math.Mod(seed, 262144)
@@ -55,7 +55,7 @@ func (th *ThugHash) Generate(seed float64) {
 	th.QuickHash = th.ThirtyTwoEncode(seed)
 }
 
-//Generates a thughHash struct from a string...can be either a 7 digit number or a textual representation
+//GenerateFrom generates a thughHash struct from a string...can be either a 7 digit number or a textual representation
 func (th *ThugHash) GenerateFrom(seed string) {
 	var seedNum float64
 	if len(seed) <= 7 {
@@ -67,7 +67,7 @@ func (th *ThugHash) GenerateFrom(seed string) {
 	th.Generate(seedNum)
 }
 
-//Creates a thughhash struct by parsing a thughash string...is pretty cool
+//Degenerate creates a thughhash struct by parsing a thughash string...is pretty cool
 func (th *ThugHash) Degenerate(hash string) float64 {
 	var output, pos float64
 	output = 0
@@ -110,7 +110,7 @@ func (th *ThugHash) Degenerate(hash string) float64 {
 	return output
 }
 
-//Base32 encodes the thughash int from a number. returns a string value
+//ThirtyTwoEncode Base32 encodes the thughash int from a number. returns a string value
 func (th ThugHash) ThirtyTwoEncode(hash float64) string {
 	output := strconv.FormatInt(int64(hash), 32)
 	for len(output) < 7 {
@@ -127,13 +127,13 @@ func (th ThugHash) generateRemainder(raw int64) int {
 	return output
 }
 
-//Outputs a slug from the thughash's word values
+//MakeSlug Outputs a slug from the thughash's word values
 func (th *ThugHash) MakeSlug() string {
 	output := th.Subject + "-" + th.Verb + "-" + th.End + "-" + strconv.Itoa(th.Remainder)
 	return output
 }
 
-//returns a base 32 string ifthe input is a thughhash and vice versa
+//MatchHash returns a base 32 string ifthe input is a thughhash and vice versa
 func (th *ThugHash) MatchHash(hash string) string {
 	var output string
 	if len(hash) <= 7 {
