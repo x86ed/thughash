@@ -1,4 +1,4 @@
-package words
+package thughash
 
 var Subjects = []string{
 	"Baby",
