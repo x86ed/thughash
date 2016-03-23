@@ -38,16 +38,16 @@ func TestThirtyTwoEncode(t *testing.T) {
 	t.Log("Testing the ThirtyTwoEncode method")
 	var th ThugHash
 	testArray := []testcase{
-		testcase{15, "000000f"},
-		testcase{999, "00000v7"},
-		testcase{9999, "00009of"},
-		testcase{0, "0000000"},
-		testcase{2147483647, "1vvvvvv"},
-		testcase{2147483648, "2000000"}}
+		{15, "000000f"},
+		{999, "00000v7"},
+		{9999, "00009of"},
+		{0, "0000000"},
+		{2147483647, "1vvvvvv"},
+		{2147483648, "2000000"}}
 	for i := 0; i < len(testArray); i++ {
 		x := th.ThirtyTwoEncode(testArray[i].test)
 		if x != testArray[i].answer {
-			t.Errorf("%d doesn't equal %q.", x, testArray[i].answer)
+			t.Errorf("%q doesn't equal %q.", x, testArray[i].answer)
 		}
 	}
 }
@@ -55,14 +55,14 @@ func TestThirtyTwoEncode(t *testing.T) {
 func TestGenerate(t *testing.T) {
 	t.Log("Testing the Generate method")
 	testArray := []testcase{
-		testcase{0, "Baby-actin-a-double-cup-1000"},
-		testcase{227425999, "Mothafucka-turnt-holdin-it-down-1867"},
-		testcase{15, "Baby-actin-holdin-it-down-1000"},
-		testcase{999, "Baby-escapin-squad-1000"},
-		testcase{9999, "Balla-pimpin-holdin-it-down-1000"},
-		testcase{2147483647, "Weezy-woke-up-yo-ass-9191"},
-		testcase{2147483648, "Baby-actin-a-double-cup-9192"},
-		testcase{247333, "Turnt-interceptin-skrilla-1000"}}
+		{0, "Baby-actin-a-double-cup-1000"},
+		{227425999, "Mothafucka-turnt-holdin-it-down-1867"},
+		{15, "Baby-actin-holdin-it-down-1000"},
+		{999, "Baby-escapin-squad-1000"},
+		{9999, "Balla-pimpin-holdin-it-down-1000"},
+		{2147483647, "Weezy-woke-up-yo-ass-9191"},
+		{2147483648, "Baby-actin-a-double-cup-9192"},
+		{247333, "Turnt-interceptin-skrilla-1000"}}
 	for i := 0; i < len(testArray); i++ {
 		var th ThugHash
 		th.Generate(testArray[i].test)
@@ -77,11 +77,11 @@ func TestGenerateRemainder(t *testing.T) {
 	t.Log("Testing the GenerateRemainder method")
 	var th ThugHash
 	testArray := []testInts{
-		testInts{1, 1001},
-		testInts{9999, 9999},
-		testInts{8999, 9999},
-		testInts{404, 1404},
-		testInts{0, 1000}}
+		{1, 1001},
+		{9999, 9999},
+		{8999, 9999},
+		{404, 1404},
+		{0, 1000}}
 	for i := 0; i < len(testArray); i++ {
 		x := th.GenerateRemainder(testArray[i].test)
 		if x != testArray[i].answer {
@@ -94,9 +94,9 @@ func TestMakeSlug(t *testing.T) {
 	t.Log("Testing the MakeSlug method")
 	var th ThugHash
 	testArray := []thugTest{
-		thugTest{1, "OG", "sippin", "my-stash", 1449, "sdfsdf", "OG-sippin-my-stash-1449"},
-		thugTest{2, "Yayo", "poppin", "the-building", 1926, "sdfsdf", "Yayo-poppin-the-building-1926"},
-		thugTest{3, "Yayo", "poppin", "the-building", 2005, "sdfsdf", "Yayo-poppin-the-building-2005"}}
+		{1, "OG", "sippin", "my-stash", 1449, "sdfsdf", "OG-sippin-my-stash-1449"},
+		{2, "Yayo", "poppin", "the-building", 1926, "sdfsdf", "Yayo-poppin-the-building-1926"},
+		{3, "Yayo", "poppin", "the-building", 2005, "sdfsdf", "Yayo-poppin-the-building-2005"}}
 	for i := 0; i < len(testArray); i++ {
 		th.Index = int(testArray[i].test)
 		th.Subject = testArray[i].subject
@@ -115,9 +115,9 @@ func TestMatchHash(t *testing.T) {
 	t.Log("Testing the MatchHash method")
 	var th ThugHash
 	testArray := []thugTest{
-		thugTest{1, "Balla", "pimpin", "holdin-it-down", 1000, "00009of", "Balla-pimpin-holdin-it-down-1000"},
-		thugTest{2, "Weezy", "woke-up", "yo-ass", 9191, "1vvvvvv", "Weezy-woke-up-yo-ass-9191"},
-		thugTest{3, "Baby", "actin", "a-double-cup", 9192, "2000000", "Baby-actin-a-double-cup-9192"}}
+		{1, "Balla", "pimpin", "holdin-it-down", 1000, "00009of", "Balla-pimpin-holdin-it-down-1000"},
+		{2, "Weezy", "woke-up", "yo-ass", 9191, "1vvvvvv", "Weezy-woke-up-yo-ass-9191"},
+		{3, "Baby", "actin", "a-double-cup", 9192, "2000000", "Baby-actin-a-double-cup-9192"}}
 	for i := 0; i < len(testArray); i++ {
 		th.Index = int(testArray[i].test)
 		th.Subject = testArray[i].subject
@@ -140,9 +140,9 @@ func TestDegenerate(t *testing.T) {
 	t.Log("Testing the Degenerate method")
 	var th ThugHash
 	testArray := []degenTest{
-		degenTest{"Balla-pimpin-holdin-it-down-1000", 9999},
-		degenTest{"Weezy-woke-up-yo-ass-9191", 2147483647},
-		degenTest{"Yayo-poppin-the-building-2005", 2.63718831e+08}}
+		{"Balla-pimpin-holdin-it-down-1000", 9999},
+		{"Weezy-woke-up-yo-ass-9191", 2147483647},
+		{"Yayo-poppin-the-building-2005", 2.63718831e+08}}
 	for i := 0; i < len(testArray); i++ {
 		x := th.Degenerate(testArray[i].test)
 		if x != testArray[i].answer {
@@ -155,9 +155,9 @@ func TestGenerateFrom(t *testing.T) {
 	t.Log("Testing the GenerateFrom method")
 	var th ThugHash
 	testArray := []genFrom{
-		genFrom{"1vvvvvv", "1vvvvvv"},
-		genFrom{"0000000", "0000000"},
-		genFrom{"Baby-actin-a-double-cup-9192", "2000000"}}
+		{"1vvvvvv", "1vvvvvv"},
+		{"0000000", "0000000"},
+		{"Baby-actin-a-double-cup-9192", "2000000"}}
 	for i := 0; i < len(testArray); i++ {
 		th.GenerateFrom(testArray[i].test)
 		x := th.QuickHash
