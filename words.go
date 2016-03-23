@@ -67,6 +67,7 @@ var Subjects = []string{
 	"Wanksta",
 	"Weezy",
 	"Yayo"}
+
 //hash verbs in text form (64)
 var Verbs = []string{
 	"actin",
