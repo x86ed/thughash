@@ -4,7 +4,7 @@ import(
 	"math"
 	"strconv"
 
-	"words"
+	"words/words"
 )
 
 func slicepos(slice []string, value string) float64 {
