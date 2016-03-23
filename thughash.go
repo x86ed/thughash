@@ -17,12 +17,6 @@ func slicepos(slice []string, value string) float64 {
 func slicerange(slice string, index int) int {
 	var output int
 	output = index + 1
-	if output >= len(slice) {
-		output = len(slice) - 1
-	}
-	if output < 1 {
-		output = 0
-	}
 	return output
 }
 

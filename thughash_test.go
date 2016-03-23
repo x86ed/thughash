@@ -62,6 +62,7 @@ func TestGenerate(t *testing.T) {
 		{9999, "Balla-pimpin-holdin-it-down-1000"},
 		{2147483647, "Weezy-woke-up-yo-ass-9191"},
 		{2147483648, "Baby-actin-a-double-cup-9192"},
+		{2147483649, "Baby-actin-a-double-cup-9192"},
 		{247333, "Turnt-interceptin-skrilla-1000"}}
 	for i := 0; i < len(testArray); i++ {
 		var th ThugHash
