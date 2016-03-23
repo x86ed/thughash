@@ -1,4 +1,4 @@
-[![Coverage](http://gocover.io/_badge/github.com/x86ed/thughash)](http://gocover.io/github.com/x86ed/thughash)
+[![Coverage](http://gocover.io/_badge/github.com/x86ed/thughash?0)](http://gocover.io/github.com/x86ed/thughash)
 [![Go Report Card](https://goreportcard.com/badge/github.com/x86ed/thughash)](https://goreportcard.com/report/github.com/x86ed/thughash) 
 
 # thughash
