@@ -46,9 +46,9 @@ func (th *ThugHash) Generate(seed float64) {
 	end := int(math.Mod(vm,64))
 	verb := int64(vm/64)
 	
-	th.Subject = words.Subjects[subject]
-	th.Verb = words.Verbs[verb]
-	th.End = words.Ends[end]
+	th.Subject = Subjects[subject]
+	th.Verb = Verbs[verb]
+	th.End = Ends[end]
 	th.Remainder = th.GenerateRemainder(remainder)
 	th.QuickHash = th.ThirtyTwoEncode(seed)
 }
@@ -71,7 +71,7 @@ func (th *ThugHash) Degenerate(hash string) float64{
 	mutantHash := hash
 		for s := range mutantHash{
 			testkey := hash[:s]
-			pos = slicepos(words.Subjects,testkey)
+			pos = slicepos(Subjects,testkey)
 			if pos > -1{
 				si := slicerange(mutantHash,s)
 				mutantHash = mutantHash[si:]
@@ -81,7 +81,7 @@ func (th *ThugHash) Degenerate(hash string) float64{
 		output += pos*4096
 		for v := range mutantHash{
 			testkey := mutantHash[:v]
-			pos = slicepos(words.Verbs,testkey)
+			pos = slicepos(Verbs,testkey)
 			if pos > -1{
 				vi := slicerange(mutantHash,v)
 				mutantHash = mutantHash[vi:]
@@ -91,7 +91,7 @@ func (th *ThugHash) Degenerate(hash string) float64{
 		output += pos*64
 		for e := range mutantHash{
 			testkey := mutantHash[:e]
-			pos = slicepos(words.Ends,testkey)
+			pos = slicepos(Ends,testkey)
 			if pos > -1{
 				ei := slicerange(mutantHash,e)
 				mutantHash = mutantHash[ei:]
