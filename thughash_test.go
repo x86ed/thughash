@@ -73,23 +73,6 @@ func TestGenerate(t *testing.T) {
 	}
 }
 
-func TestGenerateRemainder(t *testing.T) {
-	t.Log("Testing the GenerateRemainder method")
-	var th ThugHash
-	testArray := []testInts{
-		{1, 1001},
-		{9999, 9999},
-		{8999, 9999},
-		{404, 1404},
-		{0, 1000}}
-	for i := 0; i < len(testArray); i++ {
-		x := th.GenerateRemainder(testArray[i].test)
-		if x != testArray[i].answer {
-			t.Errorf("%d doesn't equal %d.", x, testArray[i].answer)
-		}
-	}
-}
-
 func TestMakeSlug(t *testing.T) {
 	t.Log("Testing the MakeSlug method")
 	var th ThugHash
