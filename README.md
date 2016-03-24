@@ -20,8 +20,21 @@ package main
 import (
 
 	"github.com/x86ed/thughash"
+	"math/rand"
+	"time"
+	"fmt"
 
 )
+
+func main(){
+	rand.Seed(time.Now().UTC().UnixNano())
+	var hash thughash.ThugHash
+	hash.Generate(rand.Float64()*2147483647)
+	
+	fmt.Printf("Your random hash is %#v .\n", hash.MakeSlug())
+	// Your Random hash is Mothafucka-turnt-holdin-it-down-1867 .
+
+}
 
 ```
 

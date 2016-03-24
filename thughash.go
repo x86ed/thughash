@@ -20,6 +20,14 @@ func slicerange(slice string, index int) int {
 	return output
 }
 
+func (th ThugHash) generateRemainder(raw int64) int {
+	output := int(raw) + 1000
+	if output > 9999 {
+		output = 9999
+	}
+	return output
+}
+
 //ThugHash exported struct containing all the representations of the hash
 type ThugHash struct {
 	Index     int
@@ -109,14 +117,6 @@ func (th ThugHash) ThirtyTwoEncode(hash float64) string {
 	output := strconv.FormatInt(int64(hash), 32)
 	for len(output) < 7 {
 		output = "0" + output
-	}
-	return output
-}
-
-func (th ThugHash) generateRemainder(raw int64) int {
-	output := int(raw) + 1000
-	if output > 9999 {
-		output = 9999
 	}
 	return output
 }
