@@ -3,6 +3,8 @@ package thughash
 import (
 	"math"
 	"strconv"
+    
+    "github.com/x86ed/thughash/words"
 )
 
 func slicepos(slice []string, value string) float64 {

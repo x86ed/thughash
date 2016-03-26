@@ -1,4 +1,4 @@
-package thughash
+package words
 
 //Subjects in text form(64)
 var Subjects = []string{
