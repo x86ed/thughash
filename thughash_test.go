@@ -5,7 +5,7 @@ import (
 )
 
 type testcase struct {
-	test   float64
+	test   int
 	answer string
 }
 

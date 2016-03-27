@@ -7,6 +7,14 @@ import (
 	"github.com/x86ed/thughash/words"
 )
 
+//ThugInterface is a n interface that contains the common methods of the hash objects
+type ThugInterface interface{
+    Generate(int)
+    Degenerate(string)int
+    MakeSlug()string
+    MatchHash(string)string
+}
+
 func slicepos(slice []string, value string) float64 {
 	for p, v := range slice {
 		if v == value {
@@ -32,7 +40,7 @@ func (th ThugHash) generateRemainder(raw int64) int {
 
 //ThugHash exported struct containing all the representations of the hash
 type ThugHash struct {
-	Index     int
+	Num     int
 	Subject   string
 	Verb      string
 	End       string
@@ -41,7 +49,8 @@ type ThugHash struct {
 }
 
 //Generate generates a thughhash struct from a given 64 bit float
-func (th *ThugHash) Generate(seed float64) {
+func (th *ThugHash) Generate(seed int) {
+    seed = float64(seed)
 	var sm, vm float64
 	sm = math.Mod(seed, 262144)
 	remainder := int64(seed / 262144)
@@ -52,9 +61,9 @@ func (th *ThugHash) Generate(seed float64) {
 	end := int(math.Mod(vm, 64))
 	verb := int64(vm / 64)
 
-	th.Subject = Subjects[subject]
-	th.Verb = Verbs[verb]
-	th.End = Ends[end]
+	th.Subject = words.Subjects[subject]
+	th.Verb = words.Verbs[verb]
+	th.End = words.Ends[end]
 	th.Remainder = th.generateRemainder(remainder)
 	th.QuickHash = th.ThirtyTwoEncode(seed)
 }
@@ -79,7 +88,7 @@ func (th *ThugHash) Degenerate(hash string) float64 {
 	mutantHash := hash
 	for s := range mutantHash {
 		testkey := hash[:s]
-		pos = slicepos(Subjects, testkey)
+		pos = slicepos(words.Subjects, testkey)
 		if pos > -1 {
 			si := slicerange(mutantHash, s)
 			mutantHash = mutantHash[si:]
@@ -89,7 +98,7 @@ func (th *ThugHash) Degenerate(hash string) float64 {
 	output += pos * 4096
 	for v := range mutantHash {
 		testkey := mutantHash[:v]
-		pos = slicepos(Verbs, testkey)
+		pos = slicepos(words.Verbs, testkey)
 		if pos > -1 {
 			vi := slicerange(mutantHash, v)
 			mutantHash = mutantHash[vi:]
@@ -99,7 +108,7 @@ func (th *ThugHash) Degenerate(hash string) float64 {
 	output += pos * 64
 	for e := range mutantHash {
 		testkey := mutantHash[:e]
-		pos = slicepos(Ends, testkey)
+		pos = slicepos(words.Ends, testkey)
 		if pos > -1 {
 			ei := slicerange(mutantHash, e)
 			mutantHash = mutantHash[ei:]
